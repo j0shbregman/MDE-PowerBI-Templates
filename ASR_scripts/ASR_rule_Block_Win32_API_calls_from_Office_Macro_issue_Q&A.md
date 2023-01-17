@@ -283,15 +283,15 @@ Run the following command from system session. There will be no UI shown to the 
     > "Word"\
     > "PowerShell 7 (x64)"\
     > "SQL Server Management Studio"\
-    > "Azure Data Studio"
-    > "Zoom"
-    > "Internet Explorer"
-    > "Skype for Business"
-    > "VLC Player"
-    > "Cisco Jabber"
-    > "Microsoft Teams"
-    > "PuTTY"
-    > "WordPad"
+    > "Azure Data Studio"\
+    > "Zoom"\
+    > "Internet Explorer"\
+    > "Skype for Business"\
+    > "VLC Player"\
+    > "Cisco Jabber"\
+    > "Microsoft Teams"\
+    > "PuTTY"\
+    > "WordPad"\
     > "AutoCAD”
 >>
 
