@@ -182,7 +182,7 @@ DeviceEvents
 </table>
 
 
-* A3/E3: Microsoft is exploring options for A3/E3/Defender for Business customers. 
+* Advanced Hunting Queries are not available in Defender for Endpoint P1, which is also included in E3 and A3, or in Defender for Business.  To identify affected machines run the script available at https://aka.ms/ASRTestImpact here on individual user machines
 >>
 
 12.	**Steps to mitigate the issue on impacted devices**\
@@ -284,6 +284,15 @@ Run the following command from system session. There will be no UI shown to the 
     > "PowerShell 7 (x64)"\
     > "SQL Server Management Studio"\
     > "Azure Data Studio"
+    > "Zoom"
+    > "Internet Explorer"
+    > "Skype for Business"
+    > "VLC Player"
+    > "Cisco Jabber"
+    > "Microsoft Teams"
+    > "PuTTY"
+    > "WordPad"
+    > "AutoCAD”
 >>
 
 18.**Limitations of the restoration scripts**
