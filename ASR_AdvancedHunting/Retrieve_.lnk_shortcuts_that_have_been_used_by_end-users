@@ -1,0 +1,18 @@
+# Advanced Hunting query to find shortcuts (.lnk) that end-users used
+# Contribution by Michael Nell (Microsoft CSS Security - MDE Support Escalation Engineer) and Alex Verboon (Microsoft Security MVP) https://github.com/alexverboon/MDATP/blob/master/AdvancedHunting/MDE-Signature-FP-ASR.md
+
+let badsignatures = dynamic(['1.381.2134.0','1.381.2140.0','1.381.2152.0','1.381.2163.0']);
+let shortcuts = DeviceEvents
+//| where Timestamp >= datetime(2023-01-13) and Timestamp < datetime(2023-01-14)
+| where ActionType contains "BrowserLaunchedToOpenUrl"
+| where RemoteUrl endswith ".lnk"
+| where RemoteUrl contains "start menu"
+| summarize by Timestamp, DeviceName, DeviceId, RemoteUrl,ActionType
+| sort by Timestamp asc;
+DeviceTvmInfoGathering
+| evaluate bag_unpack(AdditionalFields)
+| where isnotempty( AvSignatureVersion )
+| join kind=inner (shortcuts) on DeviceId
+| summarize arg_max(Timestamp,*) by DeviceId
+| project DeviceName, AvSignatureVersion, AvPlatformVersion, AvEngineVersion, RemoteUrl,ActionType //Timestamp, 
+| where AvSignatureVersion in (badsignatures)
