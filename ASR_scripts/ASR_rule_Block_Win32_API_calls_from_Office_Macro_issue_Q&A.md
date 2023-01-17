@@ -3,11 +3,11 @@
 Last updated: Jan 15, 2023 
 
 **Background**\
-On January 13, 2023, after updating to security intelligence versions between 1.381.2134.0 and 1.381.2163.0, some Windows Security and Microsoft Defender for Endpoint customers may have experienced false positive detections for the Attack Surface Reduction (ASR) rule "Block Win32 API calls from Office macro". These detections resulted in deletion of files that matched the incorrect detection logic - primarily impacting Windows shortcut (.lnk) files.  
+On January 13, 2023, after updating to security intelligence versions between 1.381.2134.0 and 1.381.2163.0, some Windows Security and Microsoft Defender for Endpoint customers may have experienced false positive detections for the Attack Surface Reduction (ASR) rule "Block Win32 API calls from Office macro", if the rule was enabled in Block mode. These detections resulted in deletion of files that matched the incorrect detection logic - primarily impacting Windows shortcut (.lnk) files.  
 
- The incorrect detection logic was fixed in security intelligence version 1.381.2164.0 (and newer). This updated version stops the issue from happening. Devices that have been impacted prior to the fix, require explicit mitigation of the files deletion.    
+The incorrect detection logic was fixed in security intelligence version 1.381.2164.0 (and newer). This updated version stops the issue false positives from happening. Devices that have been impacted prior to the fix, require explicit mitigation of the deleted files.    
 
- There is no data loss for customers who did not configure to “block” mode the ASR rule “Block Win32 API calls from Office macro” or did not deploy security intelligence versions 1.381.2134.0, 1.381.2140.0, 1.381.2152, or 1.381.2163.0.  
+There is no data loss for customers who did not configure to “block” mode the ASR rule “Block Win32 API calls from Office macro” or did not deploy security intelligence versions 1.381.2134.0, 1.381.2140.0, 1.381.2152, or 1.381.2163.0.  
 
 Review the following frequently asked questions for additional information on the impact scope and recommended mitigation steps.  
 
@@ -16,7 +16,7 @@ Review the following frequently asked questions for additional information on th
 >>
 
 2. **What Windows OS versions were impacted?**\
-All supported versions of Windows 10 and Windows 11. Non-Windows operating systems (Mac, Linux, Mobile) were not impacted.
+All supported versions of Windows 10 and Windows 11. Non-Windows operating systems (Mac, Linux, Mobile) and Windows Server 2012R2/2016/2019/2022 were not impacted.
 >>
 
 3. **What specific ASR rule caused the issue?**\
@@ -300,9 +300,9 @@ Run the following command from system session. There will be no UI shown to the 
 
 * For applications not listed in the prior step (17), the Microsoft authored script can be customized to include organizational line of business (LOB) applications and any additional applications common in the organizational environment.
 
-* The script specifically restores Start Menu shortcuts (.lnk files). It does not restore Taskbar / Desktop / File Explorer shortcuts.
+* The script specifically restores Start Menu shortcuts (.lnk files). and .URL files in the user's profile's Favorites and Desktop directories, if those URL files exist in the Volume Shadow Copy Service. 
 
-* If any non .lnk files were impacted, the script will not restore those.  
+* If any non .lnk files were impacted, the script will not restore those.  Desktop icons are not restored.  
 
 * The script has to be modified for non-English Windows versions to account for localized application installation location.  
 >
