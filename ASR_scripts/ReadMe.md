@@ -12,7 +12,7 @@ Note:  The logic depends on Windows Event entries that contain the 3 impacted SI
 
 ## RecoverRules.ps1
 
-This script requires Powershell 5.x and not Powershell 7.x
+This script requires Powershell 5.x and not Powershell 7.x\
 Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 <table>
