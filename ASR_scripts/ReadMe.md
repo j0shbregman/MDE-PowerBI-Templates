@@ -10,6 +10,9 @@ And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR
     Script to detect impact on a machine using security intelligence update (aka signature, definitions) versions installed and time range, and *any* events logged in.  https://aka.ms/ASRTestImpact
 
 ## RecoverRules.ps1
+
+This script requires Powershell 5.x and not Powershell 7.x
+
 <table>
 <tr>
 <td> Version</td> <td> Details </td> <td> Github link </td>
