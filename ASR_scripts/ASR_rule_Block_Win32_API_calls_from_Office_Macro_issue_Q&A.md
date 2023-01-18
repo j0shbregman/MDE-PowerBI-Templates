@@ -86,7 +86,8 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_all_ASR_Rules_block_events](https://aka.ms/ASRAH02))
+[Retrieve_all_ASR_Rules_block_events]
+(https://aka.ms/ASRAH02))
 
 ```
 
@@ -119,7 +120,8 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_all_lnk_block_events](https://aka.ms/ASRAH03)
+[Retrieve_all_lnk_block_events]
+(https://aka.ms/ASRAH03)
 ```
 
 </td>
@@ -147,7 +149,8 @@ DeviceEvents
 <td>
 
 ```
- [Retrieve_all_block_audit_ASR_rules_events](https://aka.ms/ASRAH04)
+ [Retrieve_all_block_audit_ASR_rules_events]
+ (https://aka.ms/ASRAH04)
 ```
 
 </td>
@@ -170,7 +173,8 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_count_of_devices_with_ASR_rule_in_block_&_audit](https://aka.ms/ASRAH05)
+[Retrieve_count_of_devices_with_ASR_rule_in_block_&_audit]
+(https://aka.ms/ASRAH05)
 ```
 
 </td>
