@@ -10,13 +10,13 @@ And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR
     Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  https://aka.ms/ASRTestImpact
 Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
-## RecoverRules.ps1
+## AddShortcuts.ps1
 
 This script requires Powershell 5.x and not Powershell 7.x\
 **Note:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
 **Note 2:**  When running the RecoverRules.ps1, you should consider passing the -force parameter.
 
-**Q:** I'm missing shortcuts after running RecoverRules.ps1\
+**Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
 
@@ -187,7 +187,7 @@ https://aka.ms/ASRTaskBarRepairTool
 </table>
 
 # Deployment options
-Here are a couple of deployment tools that you'll are able to use to push out the Powershell script and/or .exe's.
+Here are a couple of deployment tools that you'll are able to use to push out the Powershell script (AddShortcuts.ps1) and/or .exe's (MpTaskBarRecover.exe).
 * Intune (MEM, MDM) http://aka.ms/RestoreShortcuts-Intune
 * System Center Configuration Manager (SCCM, MEMCM) https://aka.ms/RestoreShortcuts-SCCM
 
