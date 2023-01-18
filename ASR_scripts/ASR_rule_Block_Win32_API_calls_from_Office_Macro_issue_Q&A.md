@@ -318,7 +318,7 @@ ASR rules deployment mechanism does not currently provide a rollback option. The
 [Enable attack surface reduction rules]
 (https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/enable-attack-surface-reduction?view=o365-worldwide)
 
-To mitigate the current data loss issue, customers need to take additional actions to recover/reconstruct impacted files.  More information on recovery options can be found at https://aka.ms/asrfprecovery.
+To mitigate the current file deletion issue, customers need to take additional actions to recover/reconstruct impacted files.  More information on recovery options can be found at https://aka.ms/asrfprecovery.
 >
 
 21.**What data is collected by Microsoft restoration script to measure the script effectiveness?**\
