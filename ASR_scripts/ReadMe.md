@@ -7,11 +7,13 @@ Please start out by reading the blog here https://aka.ms/ASRFPRecovery
 And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR_shortcuts_deletion_FAQ 
 
 ## ASROfficeWin32IsSystemImpacted.ps1
-    Script to detect impact on a machine using security intelligence update (aka signature, definitions) versions installed and time range, and *any* events logged in.  https://aka.ms/ASRTestImpact
+    Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  https://aka.ms/ASRTestImpact
+Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 ## RecoverRules.ps1
 
 This script requires Powershell 5.x and not Powershell 7.x
+Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 <table>
 <tr>
