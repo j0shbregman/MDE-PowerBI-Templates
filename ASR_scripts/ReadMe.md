@@ -181,6 +181,10 @@ https://aka.ms/ASRTaskBarRepairTool
 </tr>
 </table>
 
+# Deployment options
+Here are a couple of deployment tools that you'll are able to use to push out the Powershell script and/or .exe's.
+* Intune (MEM, MDM) http://aka.ms/RestoreShortcuts-Intune
+* System Center Configuration Manager (SCCM, MEMCM) https://aka.ms/RestoreShortcuts-SCCM
 
 # Suggestions and Feedback
 
