@@ -26,6 +26,9 @@ This guide visually demonstrates steps described in Microsoft public documentati
 Note: Device targeting is preferred in case the end users are not logged on. 
 
 Note 2:  You don't have to add "-MpTaskBarRecoverUtilDownload" since the Powershell script "AddShortcuts.ps1"  will download the MPTaskBarRecover.exe by default. 
+
+Note 3: When running the AddShortcuts.ps1, you should consider using the -force switch.
+
 ##### 5. “Add groups” select an AAD group for script targeting. You may want to select a group of test devices and users.
 
 ![Intune_deploy_script4](./Images/Intune_deploy_script4.png)
