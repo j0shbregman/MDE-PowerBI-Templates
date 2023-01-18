@@ -202,7 +202,8 @@ Security updates management options are enumerated in [Manage how and where Micr
 
 15.	**How to recover deleted links using remote management tools**\
     To restore shortcuts, run the following script on impacted devices 
-    [https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1](https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1)
+    [https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1](https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1). Version 3.0 is now streamlined so the script will perform all the actions including running the MpRecoverTaskbar.exe to recover taskbar icons. Note that if you downloaded the exe file using the aka.ms/ASRRepairTool short link, please rename the downloaded file from MpTaskBarRecover.exe to MpRecoverTaskbar.exe, before publishing it to your end users.
+    
 **Note: This script must be run in elevated mode (either admin or system).**
 
     To include additional programs into the script: edit the $program variable and add a new line with the name of the application .lnk and the executable. 
