@@ -18,8 +18,10 @@ This guide visually demonstrates steps described in Microsoft public documentati
 ##### 4. Specify the script file and configure the settings knobs as shown below 
 
 ![Intune_deploy_script3](./Images/Intune_deploy_script3.png)
-
-“Run this script using the logged-on credentials” set it to No 
+Script location: AddShortcuts.ps1\
+“Run this script using the logged-on credentials” set it to No\
+"Enforce script signature check" set it to Yes\
+"Run script in 64 bit PowerShell Host" set it to Yes
 
 Note: Device targeting is preferred in case the end users are not logged on. 
 
