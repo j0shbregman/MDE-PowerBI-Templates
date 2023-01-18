@@ -7,129 +7,39 @@ Please start out by reading the blog here https://aka.ms/ASRFPRecovery
 And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR_shortcuts_deletion_FAQ 
 
 
-
 ## ASROfficeWin32IsSystemImpacted.ps1
-    Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  https://aka.ms/ASRTestImpact
-Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
+Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  
+
+### Notes
+**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
+
+### Release History
+Version | Date    | Details | Link |
+| ------- | ------- | ----------- | ------|
+| v1      |  01/16/2023 | Initial Release | https://aka.ms/ASRTestImpact |
 
 ## AddShortcuts.ps1
 
 This script requires Powershell 5.x and not Powershell 7.x\
-**Note:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
-**Note 2:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
 
+### Release History
+
+| Version | Date    | Details | Link |
+| ------- | ------- | ----------- | ------|
+|  v3     | 01/17/2023 |<li>Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.</li><li>Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.</li><li>Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US</li><li>Updated tool messages for better clarity & detail</li><li>Runs in User Context</li>   | https://aka.ms/ASRAddShortcuts |
+|  v2     | 01/16/2023 | <li>Volume Shadow Copy (VSS) Recovery is attempted by Default</li><li>Improvements to also recover Favorite URLs to Favorites & Desktop</li><li>Handling for Server SKU to skip the run as there was no impact</li><li>Better handling on non-english language systems</li>| https://aka.ms/ASRAddShortcutsv2 |
+|  v1.1   | 01/15/2023 | <li>Added Volume Shadow Copy (VSS) Recovery switch</li><li>Added telemetry</li> |  https://aka.ms/ASRAddShortcutsV1.1 |
+|  v1.0   | 01/14/2023 | <li>Recover shortcut in the “Start menu” from a static list</li> |  https://aka.ms/ASRAddShortcutsV1 |
+
+### Notes
+**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
+**# 2:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
+
+### Frequently Asked Questions (FAQ)
 **Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
 
-
-| Version | Details | Link |
-| ------- | ------- | ----------- |
-|  v3     |* 01/17/2022
-* Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.
-* Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.
-* Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US
-* Updated tool messages for better clarity & detail
-* Runs in User Context.   | https://aka.ms/ASRAddShortcuts |
-
-<table>
-<tr>
-<td> Version</td> <td> Details </td> <td> Github link </td>
-</tr>
-<tr>
-<td>  </td>
-<td>
-
-
-
-
-
-</td>
-
-<td>
-
-```
-https://aka.ms/ASRAddShortcuts
-
-```
-
-</td>
-</tr>
-
-<tr>
-<td> v2  </td>
-<td>
-
-
-```
-* 01/16/2022
-* Volume Shadow Copy (VSS) Recovery is attempted by Default 
-* Improvements to also recover Favorite URLs to Favorites & Desktop
-* Handling for Server SKU to skip the run as there was no impact
-* Better handling on non-english language systems
-* + items from v1.1 & v1.0
-```
-
-
-</td>
-
-</td>
-
-<td>
-
-```
-https://aka.ms/ASRAddShortcutsv2
-```
-
-</td>
-
-</tr>
-<tr>
-<td> v1.1  </td>
-<td>
-
-
-```
-* 01/15/2022
-* Volume Shadow Copy (VSS) Recovery switch
-* Tool telemetry
-* + items from v1
-```
-
-</td>
-
-</td>
-
-<td>
-
-```
-https://aka.ms/ASRAddShortcutsV1.1
-```
-
-</td>
-</tr>
-<tr>
-<td> v1 </td>
-<td>
-
-
-```
-* 01/14/2022
-* Recover shortcut in the “Start menu” from a static list
-* Note: You are able to append their Line of business applications (LoB apps)
-```
-
-
-</td>
-<td>
-
-```
-https://aka.ms/ASRAddShortcutsV1
-```
-
-</td>
-</tr>
-</table>
 
 ## MpTaskBarRecover.exe
 Tool to try recovering taskbar shortcuts (.lnk)
