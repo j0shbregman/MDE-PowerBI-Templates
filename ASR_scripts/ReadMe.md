@@ -187,6 +187,12 @@ Here are a couple of deployment tools that you'll are able to use to push out th
 * Intune (MEM, MDM) http://aka.ms/RestoreShortcuts-Intune
 * System Center Configuration Manager (SCCM, MEMCM) https://aka.ms/RestoreShortcuts-SCCM
 
+# How to check if your Windows 10 or Windows 11 are still running the impacted SIU:
+In Advanced Hunting, you are able to run the following Advanced Hunting (AH) query to see if any of your devices require an updated version of the SIU: 
+https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Check_what_machines_have_the_bad_signatures
+
+Once you confirm that the devices have an updated SIU, you can move the ASR Rules - “Block Win32 API calls from Office macro” rule to **block mode**.
+
 # Suggestions and Feedback
 
 We maintain a backlog of suggested sample Powershell scripts in the project issues page. Feel free to comment, rate, or provide suggestions. We value your feedback. Let us know if you run into any problems or share your suggestions by adding an entry into the issues section.
