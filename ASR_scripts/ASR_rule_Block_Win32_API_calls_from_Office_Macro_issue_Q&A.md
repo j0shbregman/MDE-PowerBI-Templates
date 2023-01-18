@@ -331,7 +331,13 @@ If your organizational policy only allows running signed PowerShell scripts, ref
 (https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_signing?view=powershell-7.3)
 >
 
-23: **I'm missing shortcuts after running RecoverRules.ps1**\
+23. **I'm missing shortcuts after running RecoverRules.ps1**\
 The app shortcuts that will be recovered by default are listed in Q17 above\ 
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
+>
+
+24. **How to check if your Windows 10 or Windows 11 are still running the impacted SIU:**\
+In Advanced Hunting, you are able to run the following Advanced Hunting (AH) query to see if any of your devices require an updated version of the SIU: https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Check_what_machines_have_the_bad_signatures
+
+Once you confirm that the devices have an updated SIU, you can move the ASR Rules - “Block Win32 API calls from Office macro” rule to block mode.
 >
