@@ -130,8 +130,9 @@ https://aka.ms/ASRAddShortcutsV1
 Tool to try recovering taskbar shortcuts (.lnk)
 
 Usage of the tool:\
-CMD (non-admin)
-MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]\
+CMD (non-admin)\
+MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
+
 -v             verbose\
 --notelemetry  To disable telemetry reporting.\
 --forcerepair  Force repair shortcuts that are not pointing to right pinned targets.\
