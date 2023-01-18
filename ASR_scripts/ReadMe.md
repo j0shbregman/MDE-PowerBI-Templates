@@ -139,6 +139,8 @@ MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 --force        Force to rerun the tool on the same device.\
 -?             Display usage without running the tool.
 
+Note: Logs will be saved to %temp%\MpRecoverTaskBar-xxxx_x_x_x_x_x*.log
+
 <table>
 <tr>
 <td> Version</td> <td> Details </td> <td> Microsoft Download Center link  </td>
