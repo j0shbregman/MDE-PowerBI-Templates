@@ -7,7 +7,7 @@ On January 13, 2023, after updating to security intelligence versions between 1.
 
 The incorrect detection logic was fixed in security intelligence version 1.381.2164.0 (and newer). This updated version stops the issue false positives from happening. Devices that have been impacted prior to the fix, require explicit mitigation of the deleted files.    
 
-There is no data loss for customers who did not configure to “block” mode the ASR rule “Block Win32 API calls from Office macro” or did not deploy security intelligence versions 1.381.2134.0, 1.381.2140.0, 1.381.2152, or 1.381.2163.0.  
+There is no file deletion impact for customers who did not configure to “block” mode the ASR rule “Block Win32 API calls from Office macro” or did not deploy security intelligence versions 1.381.2134.0, 1.381.2140.0, 1.381.2152, or 1.381.2163.0.  
 
 Review the following frequently asked questions for additional information on the impact scope and recommended mitigation steps.  
 
@@ -33,7 +33,7 @@ Devices where ASR rule “Block Win32 API calls from Office macro” was configu
 >>
 
 6. **Did the issue impact devices where the ASR rule in question was set to “audit”?**\
-No, device with this specific ASR rule set to “audit” or not configured were not impacted by the data loss.
+No, device with this specific ASR rule set to “audit” or not configured were not impacted by the file deletion issue.
 >>
 
 7. **Was this issue also present in Cloud-delivered Protection service (formerly Microsoft Active Protection Service (MAPS)) dynamic signature?**\
@@ -52,7 +52,7 @@ Yes, it is safe to turn back on ASR rule for security intelligence version 1.381
 * Application shortcuts are removed, leading to inability to launch common and LOB applications via Start Menu / Taskbar / Desktop.  
 * When such impaired shortcut is clicked, an end user is presented with an error dialog that the item cannot be open/ application cannot be found.  
 * Application icons on Taskbar are replaced with a placeholder icon – indicating that the shortcut is no longer valid. 
-* In File Explorer, impacted shortcut files may be removed.
+* In File Explorer, impacted shortcut files / quick access links may be removed.
 * Initial reports indicate that file types other than .lnk can be impacted. So far, the top observed non .lnk file extensions are library-ms, temp, cs, ps1, and url. Support channels are actively monitored to assess any additional impact. 
 >>
 
@@ -202,7 +202,7 @@ Security updates management options are enumerated in [Manage how and where Micr
 
 15.	**How to recover deleted links using remote management tools**\
     To restore shortcuts, run the following script on impacted devices 
-    [https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcutsV1.ps1](https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1)
+    [https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1](https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1)
 **Note: This script must be run in elevated mode (either admin or system).**
 
     To include additional programs into the script: edit the $program variable and add a new line with the name of the application .lnk and the executable. 
