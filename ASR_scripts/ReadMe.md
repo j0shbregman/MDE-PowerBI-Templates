@@ -2,7 +2,8 @@
 
 This repo contains sample Powershell scripts commands and instructions to recover shortcuts (.lnk) from the False Positive (FP) on Attack Surface Reduction rules (ASR Rules) - “Block Win32 API calls from Office macro” rule turned on in **block mode**. 
 
-Please start out by reading the blog here https://aka.ms/ASRFPRecovery\
+Please start out by reading the blog here https://aka.ms/ASRFPRecovery
+
 And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR_shortcuts_deletion_FAQ 
 
 ## ASROfficeWin32IsSystemImpacted.ps1
