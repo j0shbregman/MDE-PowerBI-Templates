@@ -17,9 +17,19 @@ Usage of the tool:\
 CMD (Run as admin)\
 Powershell AddShortcuts.ps1
 
+
+-Telemetry      To disable telemetry reporting. true (default)\
+-ForceRepair    Force repair shortcuts that are not pointing to right pinned targets. false (default)\
+-VssRecovery    Use VSS recovery to restore lnk files. false (default)\
+-Verbose        Verbose\
+                Value 0: No stdout and no log file\
+                Value 1: Only stdout (default)\
+                Value 2: both stdout and log file output\
+                Value 3: detailed stdout along with log file output
+    
 **Note:** This script requires Powershell 5.x and not Powershell 7.x\
-**Note 2:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
-**Note 3:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
+**Note 2:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. -ForceRepair parameter is for that purpose.\
+**Note 3:**  When running the AddShortcuts.ps1, you should consider passing the -ForceRepair parameter.
 
 **Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
