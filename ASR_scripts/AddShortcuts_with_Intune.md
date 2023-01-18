@@ -42,8 +42,7 @@ Note 2:  You don't have to add "-MpTaskBarRecoverUtilDownload" since the Powersh
 
 ![Intune_deploy_script7](./Images/Intune_deploy_script7.png)
 
-Note: For MEM (Intune) PowerShell script troubleshooting, review: C:\ProgramData\Microsoft Intune Management Extension\Logs\IntuneManagementExtension.log
+Note: For MEM (Intune) PowerShell script troubleshooting, review: C:\ProgramData\Microsoft Intune Management Extension\Logs\IntuneManagementExtension.log and C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\AgentExecutor.log
 
 For additional information and general troubleshooting of running PowerShell scripts via Intune please see product documentation at
 [Add PowerShell scripts to Windows 10/11 devices in Microsoft Intune](https://learn.microsoft.com/en-us/mem/intune/apps/intune-management-extension#create-a-script-policy-and-assign-it)
-
