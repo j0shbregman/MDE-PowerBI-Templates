@@ -86,8 +86,7 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_all_ASR_Rules_block_events]
-(https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Retrieve_all_ASR_Rules_block_events)
+[Retrieve_all_ASR_Rules_block_events](https://aka.ms/ASRAH02))
 
 ```
 
@@ -120,8 +119,7 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_all_lnk_block_events]
-(https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Retrieve_all_lnk_block_events)
+[Retrieve_all_lnk_block_events](https://aka.ms/ASRAH03)
 ```
 
 </td>
@@ -149,8 +147,7 @@ DeviceEvents
 <td>
 
 ```
- [Retrieve_all_block_audit_ASR_rules_events]
-(https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Retrieve_all_block_audit_ASR_rules_events)
+ [Retrieve_all_block_audit_ASR_rules_events](https://aka.ms/ASRAH04)
 ```
 
 </td>
@@ -173,8 +170,7 @@ DeviceEvents
 <td>
 
 ```
-[Retrieve_count_of_devices_with_ASR_rule_in_block_&_audit]
-(https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Retrieve_count_of_devices_with_ASR_rule_in_block_%26_audit)
+[Retrieve_count_of_devices_with_ASR_rule_in_block_&_audit](https://aka.ms/ASRAH05)
 ```
 
 </td>
