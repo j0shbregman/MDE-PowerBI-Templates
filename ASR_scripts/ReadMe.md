@@ -23,9 +23,14 @@ This script requires Powershell 5.x and not Powershell 7.x\
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
 
 
-| Version | Details | GitHub Link |
+| Version | Details | Link |
 | ------- | ------- | ----------- |
-|  v3     |```      | https://aka.ms/ASRAddShortcuts |
+|  v3     |* 01/17/2022
+* Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.
+* Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.
+* Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US
+* Updated tool messages for better clarity & detail
+* Runs in User Context.   | https://aka.ms/ASRAddShortcuts |
 
 <table>
 <tr>
