@@ -129,6 +129,14 @@ https://aka.ms/ASRAddShortcutsV1
 ## MpTaskBarRecover.exe
 Tool to try recovering taskbar shortcuts (.lnk)
 
+Usage of the tool\
+MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]\
+-v             verbose\
+--notelemetry  To disable telemetry reporting.\
+--forcerepair  Force repair shortcuts that are not pointing to right pinned targets.\
+--force        Force to rerun the tool on the same device.\
+-?             Display usage without running the tool.
+
 <table>
 <tr>
 <td> Version</td> <td> Details </td> <td> Microsoft Download Center link  </td>
