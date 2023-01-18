@@ -11,10 +11,15 @@ And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR
 Note:  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 ## AddShortcuts.ps1
+Powershell script to try recovering shortcuts (.lnk)
 
-This script requires Powershell 5.x and not Powershell 7.x\
-**Note:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
-**Note 2:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
+Usage of the tool:\
+CMD (Run as admin)\
+Powershell AddShortcuts.ps1
+
+**Note:** This script requires Powershell 5.x and not Powershell 7.x\
+**Note 2:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
+**Note 3:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
 
 **Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
