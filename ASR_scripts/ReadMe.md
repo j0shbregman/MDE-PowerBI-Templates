@@ -134,11 +134,8 @@ Tool to try recovering taskbar shortcuts (.lnk)
 ```
 * 01/17/2022
 * If you are using System Center Config Manager or Group Policy Object Editor or third-party tools then deploy both files and run the command “powershell -ep bypass -file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilLocal” as Administrator.
-
 * If you are using Intune or no management tool then deploy AddShortcuts.ps1 and run the command “powershell –ep bypass –file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilDownload” as Administrator.  This will automatically download MPTaskBarRecover.exe from the Microsoft download center onto the user’s machine and run the script. Detailed Instructions on how to deploy the script using Microsoft Intune are here. 
-
 * The changes will come into effect after users logout and login to their accounts.
-
 * The MPRecoverTaskbar.exe can be run multiple times on end-user machines if necessary.  If end-users are missing taskbar icons after completing this process, then try running it a second time from %windir%\MPRecoverTaskbar.exe in the user context.
 ```
 
