@@ -63,11 +63,16 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 
 The ```MpTaskBarRecover.exe``` is added as a RunOnce to every user.  There is a best effort attempt to trigger RunOnce immediately for logged in users by impersonating their tokens.  This is only expected to work if the script is run from local SYSTEM account, and may work from an elevated administrator context depending on the local security policy.  Even if triggering the RunOnce is unsuccessful, then the .exe will run in the next time the user logs in.  Non logged on users will still have to log in to have the MpTaskBarRecover.exe run.
 
+The MpTaskBarRecover.exe is either downloaded from the Microsoft Download Center or copied locally from the current working directory to the Windows directory.  Before copying the file to the Windows directory the script validates the authenticity of the binary, unless the Skip.... is enabled.
+
+### Saving Results (Optional) 
+(CELA)
 
 ### Release History
 
 | Version | Date    | Details | Link |
 | ------- | ------- | ----------- | ------|
+|  v4     | 01/18/2023 | <li>Attempts to trigger RunOnce for every user on a **best effort** basis</li><li>```-ForceRepair`` is on by default</li><li>Minor bug fixes</li> | ? |
 |  v3     | 01/17/2023 |<li>Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.</li><li>Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.</li><li>Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US</li><li>Updated tool messages for better clarity & detail</li><li>Runs in User Context</li>   | https://aka.ms/ASRAddShortcuts |
 |  v2     | 01/16/2023 | <li>Volume Shadow Copy (VSS) Recovery is attempted by Default</li><li>Improvements to also recover Favorite URLs to Favorites & Desktop</li><li>Handling for Server SKU to skip the run as there was no impact</li><li>Better handling on non-english language systems</li>| https://aka.ms/ASRAddShortcutsv2 |
 |  v1.1   | 01/15/2023 | <li>Added Volume Shadow Copy (VSS) Recovery switch</li><li>Added telemetry</li> |  https://aka.ms/ASRAddShortcutsV1.1 |
