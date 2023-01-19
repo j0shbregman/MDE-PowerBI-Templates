@@ -11,6 +11,8 @@ This repo contains information about the following scripts:
 * MpTaskBarRecover.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
 * ASROfficeWin32IsSystemImpacted.ps1 - Powershell script that checks based on available logs and events if a machine has been impacted by this issue
 
+**Note:**  All of these scripts are signed by Mircorosft.
+
 ## AddShortcuts.ps1
 
 ```
