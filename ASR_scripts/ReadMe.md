@@ -16,9 +16,12 @@ This repo contains information about the following scripts:
 ```
 AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
 
-Telemetry:        Enable or disables having telemetry logging, default: true
-ForceRepair:      Repair is done irrespective of machine being considered affected or not, default: false
-VssRecovery:      Use VSS recovery to restore lnk files, default: false
+Telemetry:                          Enable or disables having telemetry logging, default: true
+ForceRepair:                        Repair is done irrespective of machine being considered affected or not, default: true
+VssRecovery:                        Use VSS recovery to restore lnk files, default: true
+MpTaskBarRecoverUtilDownload:        Download the MpTaskBarRecovery.exe from the Microsoft Download Center, default: true
+                                    When this is false, the script assumes that MpTaskBarRecover.exe resides in the current working                                           directory 
+SkipBinaryValidation:                Skips validating the authenticity of MpTaskBarRecover.exe whether download or locally, default: false                                    
 Verbose:          Level of logging, default 1 
                       0: No stdout and no log file
                       1: Only stdout (default)
@@ -26,7 +29,7 @@ Verbose:          Level of logging, default 1
                       3: detailed stdout along with log file output
 ```
 
-### Fix links to software installed
+### Fixes links to software installed based on app path
 The script iterates through ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` for both HKLM and HKU hives and looks for applications defined in the script.  For those applications, a version is retrieved from the registry, and a shortcut is created in the appropriate Start Menu.  This will run for all applications defined and is the registry, so customers may see new items added to the Start Menu.
 
 #### Adding additional applications
@@ -43,22 +46,22 @@ $programs = @{
 **Important:** ```$programs``` table is a key=value pair, with [] are used to denote programs that have version year info, like [Visual Studio]  For such entries with [], we will lookup file description in file version info and use that, if it doesnt exists, we will fallback using generic name.
 
 ### VSS Recovery (Optional)
-If the script discovers VSS (shadow copy), then the shadow copies are mounted, and the following paths/extensions are restored if files exist
+If the script discovers VSS (shadow copy), then the shadow copies are mounted, and the following paths/extensions are restored if the files exist
 
 | Path | Extensions |
 | ---- | ------     |
-| \Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\ | |
-| \ProgramData\Microsoft\Windows\Start Menu\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Windows\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Internet Explorer\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Office\ | |
+| \Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\ | .lnk |
+| \ProgramData\Microsoft\Windows\Start Menu\ | .lnk |
+| $($profiledir)\AppData\Roaming\Microsoft\Windows\ | .lnk |
+| $($profiledir)\AppData\Roaming\Microsoft\Internet Explorer\ | .lnk |
+| $($profiledir)\AppData\Roaming\Microsoft\Office\ | .lnk |
 | $($profiledir)\Favorites\ | .url |
 | $($profiledir)\Desktop\ | .url |
 | $($profiledir)\Desktop\ | .lnk |
 
-### Best effort to trigger run once of MpTaskBarRecovery.exe (Optional)
+### Best effort to trigger run once of MpTaskBarRecovery.exe 
 
-The ```MpTaskBarRevovery.exe``` is added as a Run Once to all users and there is a best effort attempt to run the .exe when the script runs.  Even the script in unsuccessful, then the .exe will run in the next time the user logs in.
+The ```MpTaskBarRecover.exe``` is added as a RunOnce to every user.  There is a best effort attempt to trigger RunOnce immediately for logged in users by impersonating their tokens.  This is only expected to work if the script is run from local SYSTEM account, and may work from an elevated administrator context depending on the local security policy.  Even if triggering the RunOnce is unsuccessful, then the .exe will run in the next time the user logs in.  Non logged on users will still have to log in to have the MpTaskBarRecover.exe run.
 
 
 ### Release History
