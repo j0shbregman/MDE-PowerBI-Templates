@@ -8,10 +8,10 @@ And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR
 
 This repo contains information about the following scripts:
 * AddShortcuts.ps1 - Powershell script that attempts to restore impacted shortcuts based on imformation retrieved from VSS and registry
-* MpTaskBarRecover.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
+* MpRecoverTaskbar.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
 * ASROfficeWin32IsSystemImpacted.ps1 - Powershell script that checks based on available logs and events if a machine has been impacted by this issue
 
-**Note:**  All of these scripts are signed by Mircorosft.
+**Note:**  All of these scripts are signed by Mircosoft.
 
 ## AddShortcuts.ps1
 
@@ -22,8 +22,8 @@ Telemetry:                          Enable or disables having telemetry logging,
 ForceRepair:                        Repair is done irrespective of machine being considered affected or not, default: true
 VssRecovery:                        Use VSS recovery to restore lnk files, default: true
 MpTaskBarRecoverUtilDownload:        Download the MpTaskBarRecovery.exe from the Microsoft Download Center, default: true
-                                    When this is false, the script assumes that MpTaskBarRecover.exe resides in the current working                                           directory 
-SkipBinaryValidation:                Skips validating the authenticity of MpTaskBarRecover.exe whether download or locally, default: false                                    
+                                    When this is false, the script assumes that MpRecoverTaskbar.exe resides in the current working                                           directory 
+SkipBinaryValidation:                Skips validating the authenticity of MpRecoverTaskbar.exe whether download or locally, default: false                                    
 Verbose:          Level of logging, default 1 
                       0: No stdout and no log file
                       1: Only stdout (default)
@@ -47,6 +47,12 @@ $programs = @{
 
 **Important:** ```$programs``` table is a key=value pair, with [] are used to denote programs that have version year info, like [Visual Studio]  For such entries with [], we will lookup file description in file version info and use that, if it doesnt exists, we will fallback using generic name.
 
+### Best effort to trigger RunOnce of MpRecoverTaskbar.exe 
+
+The ```MpRecoverTaskbar.exe``` is added as a RunOnce to every user.  There is a best effort attempt to trigger RunOnce immediately for logged in users by impersonating their tokens.  This is only expected to work if the script is run from local SYSTEM account, and may work from an elevated administrator context depending on the local security policy.  Even if triggering the RunOnce is unsuccessful, then the .exe will run in the next time the user logs in.  Non logged on users will still have to log in to have the ```MpRecoverTaskbar.exe``` run.
+
+The ```MpRecoverTaskbar.exe``` is either downloaded from the Microsoft Download Center or copied locally from the current working directory to the Windows directory.  Before copying the file to the Windows directory the script validates the authenticity of the binary, unless the SkipBinaryValidation is enabled.
+
 ### VSS Recovery (Optional)
 If the script discovers VSS (shadow copy), then the shadow copies are mounted, and the following paths/extensions are restored if the files exist
 
@@ -61,11 +67,6 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 | $($profiledir)\Desktop\ | .url |
 | $($profiledir)\Desktop\ | .lnk |
 
-### Best effort to trigger run once of MpTaskBarRecovery.exe 
-
-The ```MpTaskBarRecover.exe``` is added as a RunOnce to every user.  There is a best effort attempt to trigger RunOnce immediately for logged in users by impersonating their tokens.  This is only expected to work if the script is run from local SYSTEM account, and may work from an elevated administrator context depending on the local security policy.  Even if triggering the RunOnce is unsuccessful, then the .exe will run in the next time the user logs in.  Non logged on users will still have to log in to have the MpTaskBarRecover.exe run.
-
-The MpTaskBarRecover.exe is either downloaded from the Microsoft Download Center or copied locally from the current working directory to the Windows directory.  Before copying the file to the Windows directory the script validates the authenticity of the binary, unless the Skip.... is enabled.
 
 ### Saving Results (Optional) 
 (CELA)
@@ -89,7 +90,7 @@ The MpTaskBarRecover.exe is either downloaded from the Microsoft Download Center
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
 
-## MpTaskBarRecover.exe
+## MpRecoverTaskbar.exe
 Tool to try recovering taskbar shortcuts (.lnk)
 
 ### Usage
@@ -97,10 +98,10 @@ Tool to try recovering taskbar shortcuts (.lnk)
 CMD (non-admin)\
 MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 
--v             verbose\
---notelemetry  To disable telemetry reporting.\
---forcerepair  Force repair shortcuts that are not pointing to right pinned targets.\
---force        Force to rerun the tool on the same device.\
+-v             verbose
+--notelemetry  To disable telemetry reporting.
+--forcerepair  Force repair shortcuts that are not pointing to right pinned targets.
+--force        Force to rerun the tool on the same device.
 -?             Display usage without running the tool.
 ```
 ### Release History
@@ -126,7 +127,7 @@ Version | Date    | Details | Link |
 
 
 # Deployment options
-Here are a couple of deployment tools that you'll are able to use to push out the Powershell script (AddShortcuts.ps1) and/or .exe's (MpTaskBarRecover.exe).
+Here are a couple of deployment tools that you'll are able to use to push out the Powershell script (AddShortcuts.ps1) and/or .exe's (MpRecoverTaskbar.exe).
 * Intune (MEM, MDM) http://aka.ms/RestoreShortcuts-Intune
 * System Center Configuration Manager (SCCM, MEMCM) https://aka.ms/RestoreShortcuts-SCCM
 
