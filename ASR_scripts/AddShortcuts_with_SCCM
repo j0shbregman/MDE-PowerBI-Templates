@@ -16,13 +16,13 @@ and
 
     Click **Next**.
 
-    ![Graphical user interface, text, application, email Description automatically generated](/Images/ASRFPRecovery_with_SCCM01.png)
+    ![Graphical user interface, text, application, email Description automatically generated](./Images/ASRFPRecovery_with_SCCM01.png)
 
 5.  In the **Program Type** window, Select **Standard Program** and click Next.
 
 6.  In the **Standard Program** windows, update the fields as below.
 
-For the ![Graphical user interface, text, application, email Description automatically generated](/Images/ASRFPRecovery_with_SCCM02.png)
+For the ![Graphical user interface, text, application, email Description automatically generated](./Images/ASRFPRecovery_with_SCCM02.png)
 
     Use the below command line:
 
