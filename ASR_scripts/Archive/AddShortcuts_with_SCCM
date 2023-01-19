@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/mem/configmgr/apps/deploy-use/create-deploy-scripts
+
+TIP: When running the AddShortcuts.ps1, you should consider using the -force.
