@@ -1,11 +1,1 @@
-#Create ConfigMgr package to recover deleted start menu and taskbar shortcuts
-
-Follow the below steps to create a package in ConfigMgr to recover start menu and taskbar shortcuts.
-
-Download both 
-
-[AddShortcuts.ps1](https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1) 
-
-and
-
-[MpRecoverTaskBar.exe](https://aka.ms/ASRTaskBarRepairTool) to a folder.
+# Create ConfigMgr package to recover deleted start menu and taskbar shortcuts
