@@ -14,6 +14,20 @@ This repo contains information about the following scripts:
 ## AddShortcuts.ps1
 This powershell is a collection of capabilities that may assist customer in recovering links that were impacted with this issue.
 
+### Usage
+```
+AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
+
+Telemetry:        Enable or disables having telemetry logging, default: true
+ForceRepair:      Repair is done irrespective of machine being considered affected or not, default: false
+VssRecovery:      Use VSS recovery to restore lnk files, default: false
+Verbose:          Level of logging, default 1 
+                      0: No stdout and no log file
+                      1: Only stdout (default)
+                      2: both stdout and log file output
+                      3: detailed stdout along with log file output
+```
+
 ### Fix links to software installed
 The script iterates through ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` for both HKLM and HKU hives and looks for applications defined in the script.  For those applications, a version is retrieved from the registry, and a shortcut is created in the appropriate Start Menu.  This will run for all applications defined and is the registry, so customers may see new items added to the Start Menu.
 
@@ -46,20 +60,7 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 
 ### Best effort to trigger run once of MpTaskBarRecovery.exe (Optional)
 
-
-### Usage
-```
-AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
-
-Telemetry:        Enable or disables having telemetry logging, default: true
-ForceRepair:      Repair is done irrespective of machine being considered affected or not, default: false
-VssRecovery:      Use VSS recovery to restore lnk files, default: false
-Verbose:          Level of logging, default 1 
-                      0: No stdout and no log file
-                      1: Only stdout (default)
-                      2: both stdout and log file output
-                      3: detailed stdout along with log file output
-```
+The ```MpTaskBarRevovery.exe``` is added as a Run Once to all users and there is a best effort attempt to run the .exe when the script runs.  Even the script in unsuccessful, then the .exe will run in the next time the user logs in.
 
 
 ### Release History
@@ -75,7 +76,6 @@ Verbose:          Level of logging, default 1
 **#1:**  This script works best with Powershell 5.x.  The script has encountered issues with some versions of Powershell 7.x.  If you encounter an issue with Powershell 7.x, please consider running this script with Powershell 5.x.
 
 
-
 ### Frequently Asked Questions (FAQ)
 **Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
@@ -84,7 +84,8 @@ If you want to add additional shortcuts, you are able to by adding the shortcut 
 ## MpTaskBarRecover.exe
 Tool to try recovering taskbar shortcuts (.lnk)
 
-Usage of the tool:\
+### Usage
+```
 CMD (non-admin)\
 MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 
@@ -93,76 +94,27 @@ MpTaskBarRecover.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 --forcerepair  Force repair shortcuts that are not pointing to right pinned targets.\
 --force        Force to rerun the tool on the same device.\
 -?             Display usage without running the tool.
-
-Note: Logs will be saved to %temp%\MpRecoverTaskBar-xxxx_x_x_x_x_x*.log
-
-<table>
-<tr>
-<td> Version</td> <td> Details </td> <td> Microsoft Download Center link  </td>
-</tr>
-<tr>
-<td> v2 </td>
-<td>
-
-
 ```
-* 01/17/2022
-* If you are using System Center Config Manager or Group Policy Object Editor or third-party tools then deploy both files and run the command “powershell -ep bypass -file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilLocal” as Administrator.
-* If you are using Intune or no management tool then deploy AddShortcuts.ps1 and run the command “powershell –ep bypass –file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilDownload” as Administrator.  This will automatically download MPTaskBarRecover.exe from the Microsoft download center onto the user’s machine and run the script. Detailed Instructions on how to deploy the script using Microsoft Intune are here. 
-* The changes will come into effect after users logout and login to their accounts.
-* The MPRecoverTaskbar.exe can be run multiple times on end-user machines if necessary.  If end-users are missing taskbar icons after completing this process, then try running it a second time from %windir%\MPRecoverTaskbar.exe in the user context.
-```
+### Release History
+| Version |Date | Details | Microsoft Download Center Link |
+|-----    |-----|------   |-----                           |
+|   v2    | 01/17/2022 | <li>If you are using System Center Config Manager or Group Policy Object Editor or third-party tools then deploy both files and run the command “powershell -ep bypass -file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilLocal” as Administrator.</li><li>The changes will come into effect after users logout and login to their accounts.</li><li>The MPRecoverTaskbar.exe can be run multiple times on end-user machines if necessary.  If end-users are missing taskbar icons after completing this process, then try running it a second time from %windir%\MPRecoverTaskbar.exe in the user context.</li>|https://aka.ms/ASRTaskBarRepairTool|
+|   v1   |  01/16/2022 | <li>Needs to run in user context (non-admin)</li> | ?  |
 
-
-</td>
-
-<td>
-
-```
-https://aka.ms/ASRTaskBarRepairTool
-
-```
-
-</td>
-</tr>
-
-<tr>
-<td> v1  </td>
-<td>
-
-
-```
-* 01/16/2022
-* Needs to run in user context (non-admin) 
-```
-
-
-</td>
-
-</td>
-
-<td>
-
-```
-<Replaced with the new version>
-```
-
-</td>
-
-
-</tr>
-</table>
+### Notes
+**#1:**Logs will be saved to ```%temp%\MpRecoverTaskBar-xxxx_x_x_x_x_x*.log``` 
 
 ## ASROfficeWin32IsSystemImpacted.ps1
 Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  
-
-### Notes
-**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 ### Release History
 Version | Date    | Details | Link |
 | ------- | ------- | ----------- | ------|
 | v1      |  01/16/2023 | Initial Release | https://aka.ms/ASRTestImpact |
+
+
+### Notes
+**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
 
 
 # Deployment options
