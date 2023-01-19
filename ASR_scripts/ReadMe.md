@@ -12,9 +12,7 @@ This repo contains information about the following scripts:
 * ASROfficeWin32IsSystemImpacted.ps1 - Powershell script that checks based on available logs and events if a machine has been impacted by this issue
 
 ## AddShortcuts.ps1
-This powershell is a collection of capabilities that may assist customer in recovering links that were impacted with this issue.
 
-### Usage
 ```
 AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
 
