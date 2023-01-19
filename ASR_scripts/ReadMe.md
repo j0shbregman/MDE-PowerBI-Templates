@@ -40,7 +40,7 @@ Verbose:                            Level of logging, default 1
                                         1: Only stdout (default)
                                         2: both stdout and log file output
                                         3: detailed stdout along with log file output
-
+```
 ### Fix links to software installed
 The script iterates through ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` for both HKLM and HKU hives and looks for applications defined in the script. For those applications, a version is retrieved from the registry, and a shortcut is created in the appropriate Start Menu. This will run for all applications defined and in the registry, so customers may see new items added to the Start Menu.
 
