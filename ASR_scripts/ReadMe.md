@@ -29,7 +29,7 @@ Telemetry:                          Enable or disables having telemetry logging,
 ForceRepair:                        Repair is done irrespective of machine being considered affected or not, 
                                     default: true
 VssRecovery:                        Use VSS recovery to restore lnk files, default: true
-MpTaskBarRecoverUtilDownload:       Download the MpTaskBarRecovery.exe from the Microsoft Download Center, 
+MpTaskBarRecoverUtilDownload:       Download the MpRecoverTaskbar.exe from the Microsoft Download Center, 
                                     default: true
                                     When this is false, the script assumes that MpRecoverTaskbar.exe resides in 
                                     the current working directory, default: true 
@@ -80,8 +80,8 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 ### Saving Results (Optional) 
 For information about this tool, including data it stores to understand effectiveness, go to https://aka.ms/ASR_shortcuts_deletion_FAQ
 
-### Best effort to trigger run once of MpTaskBarRecovery.exe (Optional)
-The ```MpTaskBarRevovery.exe``` is added as a RunOnce to all users and there is a best effort attempt to run the .exe when the script runs.  If the script is unsuccessful, then the .exe will run the next time the user logs in.
+### Best effort to trigger run once of MpRecoverTaskbar.exe (Optional)
+The ```MpRecoverTaskbar.exe``` is added as a RunOnce to all users and there is a best effort attempt to run the .exe when the script runs.  If the script is unsuccessful, then the .exe will run the next time the user logs in.
 
 
 ### Release History
@@ -116,8 +116,8 @@ MpRecoverTaskbar.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 ### Release History
 | Version |Date | Details | Microsoft Download Center Link |
 |-----    |-----|------   |-----                           |
-|   v2    | 01/17/2022 | <li>If you are using System Center Config Manager or Group Policy Object Editor or third-party tools then deploy both files and run the command “powershell -ep bypass -file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilLocal” as Administrator.</li><li>The changes will come into effect after users logout and login to their accounts.</li><li>The MPRecoverTaskbar.exe can be run multiple times on end-user machines if necessary.  If end-users are missing taskbar icons after completing this process, then try running it a second time from %windir%\MPRecoverTaskbar.exe in the user context.</li>|https://aka.ms/ASRTaskBarRepairTool|
-|   v1   |  01/16/2022 | <li>Needs to run in user context (non-admin)</li> | ?  |
+|   v2    | 01/17/2022 | <li>If you are using System Center Config Manager or Group Policy Object Editor or third-party tools then deploy both files and run the command “powershell -ep bypass -file .\AddShortcuts.ps1 -MpTaskBarRecoverUtilLocal” as Administrator.</li><li>The changes will come into effect after users logout and login to their accounts.</li><li>The MPRecoverTaskbar.exe can be run multiple times on end-user machines if necessary.  If end-users are missing taskbar icons after completing this process, then try running it a second time from %windir%\MPRecoverTaskbar.exe in the user context.  The name of the .exe is now MpRecoverTaskbar.exe. </li>|https://aka.ms/ASRTaskBarRepairTool|
+|   v1   |  01/16/2022 | <li>Needs to run in user context (non-admin). The name of the .exe is MpTaskBarRecovery.exe</li>| ?  |
 
 ### Notes
 **#1:** Logs will be saved to ```%temp%\MpRecoverTaskBar-xxxx_x_x_x_x_x*.log``` 
