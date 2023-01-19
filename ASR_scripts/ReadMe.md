@@ -7,12 +7,59 @@ Please start out by reading the blog here https://aka.ms/ASRFPRecovery
 And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR_shortcuts_deletion_FAQ 
 
 This repo contains information about the following scripts:
-* AddShortcuts.ps1 - Poweshell script that attempts to restore a user's 
-* MpTaskBarRecover.exe - Executable that arestores a user's task bar
+* AddShortcuts.ps1 - Powershell script that attempts to restore impacted shortcuts based on imformation retrieved from VSS and registry
+* MpTaskBarRecover.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
 * ASROfficeWin32IsSystemImpacted.ps1 - Powershell script that checks based on available logs and events if a machine has been impacted by this issue
 
 ## AddShortcuts.ps1
+This powershell is a collection of capabilities that may assist customer in recovering links that were impacted with this issue.
 
+### Fix links to software installed
+The script iterates through ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` for both HKLM and HKU hives and looks for applications defined in the script.  For those applications, a version is retrieved from the registry, and a shortcut is created in the appropriate Start Menu.  This will run for all applications defined and is the registry, so customers may see new items added to the Start Menu.
+
+#### Adding additional applications
+The script can be modified to include additional applications by adding entry to the ```$programs``` variable.  
+
+```
+$programs = @{
+    "Adobe Acrobat"                = "Acrobat.exe"
+    "[Adobe Photoshop]"            = "photoshop.exe"
+    "[Adobe Illustrator]"          = "illustrator.exe"
+    ...
+```
+
+**Important:** ```$programs``` table is a key=value pair, with [] are used to denote programs that have version year info, like [Visual Studio]  For such entries with [], we will lookup file description in file version info and use that, if it doesnt exists, we will fallback using generic name.
+
+### VSS Recovery (Optional)
+If the script discovers VSS (shadow copy), then the shadow copies are mounted, and the following paths/extensions are restored if files exist
+
+| Path | Extensions |
+| ---- | ------     |
+| \Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\ | |
+| \ProgramData\Microsoft\Windows\Start Menu\ | |
+| $($profiledir)\AppData\Roaming\Microsoft\Windows\ | |
+| $($profiledir)\AppData\Roaming\Microsoft\Internet Explorer\ | |
+| $($profiledir)\AppData\Roaming\Microsoft\Office\ | |
+| $($profiledir)\Favorites\ | .url |
+| $($profiledir)\Desktop\ | .url |
+| $($profiledir)\Desktop\ | .lnk |
+
+### Best effort to trigger run once of MpTaskBarRecovery.exe (Optional)
+
+
+### Usage
+```
+AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
+
+Telemetry:        Enable or disables having telemetry logging, default: true
+ForceRepair:      Repair is done irrespective of machine being considered affected or not, default: false
+VssRecovery:      Use VSS recovery to restore lnk files, default: false
+Verbose:          Level of logging, default 1 
+                      0: No stdout and no log file
+                      1: Only stdout (default)
+                      2: both stdout and log file output
+                      3: detailed stdout along with log file output
+```
 
 
 ### Release History
@@ -25,7 +72,7 @@ This repo contains information about the following scripts:
 |  v1.0   | 01/14/2023 | <li>Recover shortcut in the “Start menu” from a static list</li> |  https://aka.ms/ASRAddShortcutsV1 |
 
 ### Notes
-**#1:**  This script works best with Powershell 5.x.  Some versions of Powershell 7.x have limitations.  If you encounter an issue with Powershell 7.x, please consider running this script with Powershell 5.x.
+**#1:**  This script works best with Powershell 5.x.  The script has encountered issues with some versions of Powershell 7.x.  If you encounter an issue with Powershell 7.x, please consider running this script with Powershell 5.x.
 
 
 
