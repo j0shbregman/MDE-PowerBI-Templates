@@ -11,15 +11,21 @@ This repo contains information about the following scripts:
 * MpRecoverTaskbar.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
 * ASROfficeWin32IsSystemImpacted.ps1 - PowerShell script that checks based on available logs and events if a machine has been impacted by this issue
 
+**Note:**  All of these scripts are signed by Mircosoft.
+
 ## AddShortcuts.ps1
 
 ```
 AddShortcuts.ps1 [-Telemetry $false|$true ][ -ForceRepair ][ -VssRecovery ][ -Verbose 0|1|2|3 ]
 
+
 Telemetry:        Enable or disable telemetry logging, default: true
 ForceRepair:      Repair is done irrespective of machine being considered affected or not, default: false
 VssRecovery:      Use VSS recovery to restore lnk files, default: false
 Verbose:          Level of logging, default: 1 
+MpTaskBarRecoverUtilDownload:        Download the MpTaskBarRecovery.exe from the Microsoft Download Center, default: true
+                                    When this is false, the script assumes that MpRecoverTaskbar.exe resides in the current working                                           directory 
+SkipBinaryValidation:                Skips validating the authenticity of MpRecoverTaskbar.exe whether download or locally, default: false                                    
                       0: No stdout and no log file
                       1: Only stdout (default)
                       2: both stdout and log file output
@@ -42,6 +48,12 @@ $programs = @{
 
 **Important:** ```$programs``` table is a key=value pair, with [] used to denote programs that have version year info, like [Visual Studio]. For such entries with [], we will lookup file description in file version info and use that, if it does not exist, we will fallback using generic name.
 
+### Best effort to trigger RunOnce of MpRecoverTaskbar.exe 
+
+The ```MpRecoverTaskbar.exe``` is added as a RunOnce to every user.  There is a best effort attempt to trigger RunOnce immediately for logged in users by impersonating their tokens.  This is only expected to work if the script is run from local SYSTEM account, and may work from an elevated administrator context depending on the local security policy.  Even if triggering the RunOnce is unsuccessful, then the .exe will run in the next time the user logs in.  Non logged on users will still have to log in to have the ```MpRecoverTaskbar.exe``` run.
+
+The ```MpRecoverTaskbar.exe``` is either downloaded from the Microsoft Download Center or copied locally from the current working directory to the Windows directory.  Before copying the file to the Windows directory the script validates the authenticity of the binary, unless the SkipBinaryValidation is enabled.
+
 ### VSS Recovery (Optional)
 If the script discovers VSS (shadow copy), then the shadow copies are mounted, and the following paths/extensions are restored if files exist
 
@@ -55,6 +67,7 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 | $($profiledir)\Favorites\ | .url |
 | $($profiledir)\Desktop\ | .url |
 | $($profiledir)\Desktop\ | .lnk |
+
 
 ### Best effort to trigger run once of MpTaskBarRecovery.exe (Optional)
 
@@ -83,13 +96,14 @@ Tool to try recovering taskbar shortcuts (.lnk)
 
 ### Usage
 ```
-CMD (non-admin)\
+CMD (non-admin)
+
 MpRecoverTaskbar.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 
--v             verbose\
---notelemetry  To disable telemetry reporting.\
---forcerepair  Force repair shortcuts that are not pointing to right pinned targets.\
---force        Force to rerun the tool on the same device.\
+-v             verbose
+--notelemetry  To disable telemetry reporting.
+--forcerepair  Force repair shortcuts that are not pointing to right pinned targets.
+--force        Force to rerun the tool on the same device.
 -?             Display usage without running the tool.
 ```
 ### Release History
