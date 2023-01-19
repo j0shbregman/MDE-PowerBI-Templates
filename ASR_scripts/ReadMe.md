@@ -68,16 +68,14 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 
 | Path | Extensions |
 | ---- | ------     |
-| \Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\ | |
-| \ProgramData\Microsoft\Windows\Start Menu\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Windows\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Internet Explorer\ | |
-| $($profiledir)\AppData\Roaming\Microsoft\Office\ | |
-| $($profiledir)\Favorites\ | .url |
-| $($profiledir)\Desktop\ | .url |
-| $($profiledir)\Desktop\ | .lnk |
-
-
+| \Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\ | .lnk |
+| \ProgramData\Microsoft\Windows\Start Menu\ | .lnk |
+| %USERPROFILE%\AppData\Roaming\Microsoft\Windows\ | .lnk |
+| %USERPROFILE%\AppData\Roaming\Microsoft\Internet Explorer\ | .lnk |
+| %USERPROFILE%\AppData\Roaming\Microsoft\Office\ | .lnk  |
+| %USERPROFILE%\Favorites\ | .url |
+| %USERPROFILE%\Desktop\ | .url |
+| %USERPROFILE%\Desktop\ | .lnk |
 
 ### Saving Results (Optional) 
 For information about this tool, including data it stores to understand effectiveness, go to https://aka.ms/ASR_shortcuts_deletion_FAQ
@@ -90,8 +88,8 @@ The ```MpTaskBarRevovery.exe``` is added as a RunOnce to all users and there is 
 
 | Version | Date    | Details | Link |
 | ------- | ------- | ----------- | ------|
-|  v4     | 01/18/2023 | <li>Attempts to trigger RunOnce for every user on a **best effort** basis</li><li>```-ForceRepair``` is ```$true``` by default</li><li>Minor bug fixes</li> | ? |
-|  v3     | 01/17/2023 |<li>Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.</li><li>Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.</li><li>Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US</li><li>Updated tool messages for better clarity & detail</li><li>Runs in User Context</li>   | https://aka.ms/ASRAddShortcuts |
+|  v4     | 01/18/2023 | <li>Attempts to trigger RunOnce for every user on a **best effort** basis</li><li>```-ForceRepair``` is ```$true``` by default</li><li>Minor bug fixes</li> | https://aka.ms/ASRAddShortcuts |
+|  v3     | 01/17/2023 |<li>Improved VSS recovery to restore .lnk files into Startup, Desktop, and Quick Launch.</li><li>Updated VSS recovery logic to look for shadow copies before '2023-01-13T06:04:45.000Z' on using the -ForceRepair option.</li><li>Enhanced support for localization - fixed bug where ACL didn't work outside of EN-US</li><li>Updated tool messages for better clarity & detail</li><li>Runs in User Context</li>   | https://aka.ms/ASRAddShortcutsv3 |
 |  v2     | 01/16/2023 | <li>Volume Shadow Copy (VSS) Recovery is attempted by Default</li><li>Improvements to also recover Favorite URLs to Favorites & Desktop</li><li>Handling for Server SKU to skip the run as there was no impact</li><li>Better handling on non-english language systems</li>| https://aka.ms/ASRAddShortcutsv2 |
 |  v1.1   | 01/15/2023 | <li>Added Volume Shadow Copy (VSS) Recovery switch</li><li>Added telemetry</li> |  https://aka.ms/ASRAddShortcutsV1.1 |
 |  v1.0   | 01/14/2023 | <li>Recover shortcut in the “Start menu” from a static list</li> |  https://aka.ms/ASRAddShortcutsV1 |
