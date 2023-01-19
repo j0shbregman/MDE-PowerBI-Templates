@@ -20,7 +20,7 @@ This script provides a variety of techniques that can help recover links.
 AddShortcuts.ps1 [-Telemetry $false|$true ]  `
                  [ -ForceRepair ] `
                  [ -VssRecovery ] `
-                 [ -MpTaskBarRecoverUtilDownload ] `
+                 [ -MpTaskBarRecoverUtilDownload $false|$true ] `
                  [ -SkipBinaryValidation] `
                  [ -Verbose 0|1|2|3 ] `
 
