@@ -1,4 +1,4 @@
-# About
+# Block Win32 API calls from Office macro ASR Recovery Scripts
 
 This repo contains sample Powershell scripts commands and instructions to recover shortcuts (.lnk) from the False Positive (FP) on Attack Surface Reduction rules (ASR Rules) - “Block Win32 API calls from Office macro” rule turned on in **block mode**. 
 
@@ -6,21 +6,14 @@ Please start out by reading the blog here https://aka.ms/ASRFPRecovery
 
 And then going thru the Frequently Asked Questions (FAQ) here https://aka.ms/ASR_shortcuts_deletion_FAQ 
 
-
-## ASROfficeWin32IsSystemImpacted.ps1
-Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  
-
-### Notes
-**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
-
-### Release History
-Version | Date    | Details | Link |
-| ------- | ------- | ----------- | ------|
-| v1      |  01/16/2023 | Initial Release | https://aka.ms/ASRTestImpact |
+This repo contains information about the following scripts:
+* AddShortcuts.ps1 - Poweshell script that attempts to restore a user's 
+* MpTaskBarRecover.exe - Executable that arestores a user's task bar
+* ASROfficeWin32IsSystemImpacted.ps1 - Powershell script that checks based on available logs and events if a machine has been impacted by this issue
 
 ## AddShortcuts.ps1
 
-This script requires Powershell 5.x and not Powershell 7.x\
+
 
 ### Release History
 
@@ -32,14 +25,14 @@ This script requires Powershell 5.x and not Powershell 7.x\
 |  v1.0   | 01/14/2023 | <li>Recover shortcut in the “Start menu” from a static list</li> |  https://aka.ms/ASRAddShortcutsV1 |
 
 ### Notes
-**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. Force parameter is for that purpose.\
-**# 2:**  When running the AddShortcuts.ps1, you should consider passing the -force parameter.
+**#1:**  This script works best with Powershell 5.x.  Some versions of Powershell 7.x have limitations.  If you encounter an issue with Powershell 7.x, please consider running this script with Powershell 5.x.
+
+
 
 ### Frequently Asked Questions (FAQ)
 **Q:** I'm missing shortcuts after running AddShortcuts.ps1\
 **A:** The app shortcuts that will be recovered by default are listed in Q17 here https://aka.ms/ASR_shortcuts_deletion_FAQ\
 If you want to add additional shortcuts, you are able to by adding the shortcut name w/o the .lnk and adding the .exe in line 65 in the RecoverRules.ps1 here https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_scripts/AddShortcuts.ps1
-
 
 ## MpTaskBarRecover.exe
 Tool to try recovering taskbar shortcuts (.lnk)
@@ -112,6 +105,18 @@ https://aka.ms/ASRTaskBarRepairTool
 
 </tr>
 </table>
+
+## ASROfficeWin32IsSystemImpacted.ps1
+Script to detect impact on a machine using security intelligence update (SIU aka signature, definitions) versions installed and time range, and *any* events logged in.  
+
+### Notes
+**#1:**  The logic depends on Windows Event entries that contain the 3 impacted SIU versions. But those events get rotated especially as days pass, so you'll may see 'Machine was not impacted by ASR rule', 'Machine didnt get affected' respectively for the scripts. ForceRepair parameter is for that purpose.
+
+### Release History
+Version | Date    | Details | Link |
+| ------- | ------- | ----------- | ------|
+| v1      |  01/16/2023 | Initial Release | https://aka.ms/ASRTestImpact |
+
 
 # Deployment options
 Here are a couple of deployment tools that you'll are able to use to push out the Powershell script (AddShortcuts.ps1) and/or .exe's (MpTaskBarRecover.exe).
