@@ -1,6 +1,6 @@
 # Step-by-step guide to run MpTaskBarRecover.exe via Group Policy Preferences (GPP) on Windows 10/11
 
-### *Before proceeding:* You only need to follow these steps if your Windows 10 or Windows 11 are not able to download https://aka.ms/ASRTaskBarRepairTool directly from the Microsoft Download Center (MSFTDlC).  Since https://aka.ms/ASRAddShortcuts automatically tries to download ASRTaskBarRepairTool from the MSFTDlC.
+### *Before proceeding:* If you are using Group Policy Preference (GPP), you need to make sure that the following has been https://aka.ms/AddShortcuts_with_GPP completed first.  You only need to follow these steps if your Windows 10 or Windows 11 are not able to download https://aka.ms/ASRTaskBarRepairTool directly from the Microsoft Download Center (MSFTDlC).  Since https://aka.ms/ASRAddShortcuts automatically tries to download ASRTaskBarRepairTool from the MSFTDlC.
 <br />
 
 You can use a Scheduled Task group policy preference that launches at logon for user level.
