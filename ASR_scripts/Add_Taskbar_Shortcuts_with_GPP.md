@@ -31,9 +31,10 @@ Click on "Details" tab\
 ![Info](.ImagesGPO/GPO25.png)\
 Write down the "Unique ID" e.g. DFF97E65-7139-401B-9D27-13FC975BE08D\
 ![Info](ImagesGPO/GPO26.png)\
-Note:  In this example is in \\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User\
-Note 2: The DFF97E65-7139-401B-9D27-13FC975BE08D will be different for your environment.\
-Note 3: You will need the unique GUID above for step 10.
+Note:  In this example is in "\\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User"\
+Note 2: Where dc is the name of one of your domain controllers. 
+Note 3: Where DFF97E65-7139-401B-9D27-13FC975BE08D is the GUID for the GPO, it will be different for your GPO.\
+Note 4: You will need the unique GUID above for step 10.
 
 ##### 5. Download https://aka.ms/ASRTaskBarRepairTool to c:\temp
 Download the latest version of the .exe from https://aka.ms/ASRTaskBarRepairTool to your drive.  In this example, we are using c:\temp\
@@ -91,13 +92,13 @@ Note: The expiration is optional
 ![Info](ImagesGPO/GPO30.png)\
 Click on New...
 
-### *Copy c:\temp\MpTaskBarRecover.exe to \\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User*
+### *Copy c:\temp\MpTaskBarRecover.exe to "\\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User"*
 Note: The GUID here will be different for your environment.  Review Step 4 above.
 >
 
 ![Info](ImagesGPO/GPO31.png)\
 Click on "Browse..."\
-Note: \\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User\
+Note: "\\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User\"
 Note: The GUID here will be different for your environment.  Review Step 4 above.
 
 ![Info](ImagesGPO/GPO32.png)\
