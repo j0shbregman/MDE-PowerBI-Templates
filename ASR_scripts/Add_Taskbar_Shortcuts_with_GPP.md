@@ -28,7 +28,7 @@ Click on OK
 
 ##### 4. Double-click on "Recover Taskbar"
 Click on "Details" tab\
-![Info](.ImagesGPO/GPO25.png)\
+![Info](ImagesGPO/GPO25.png)\
 Write down the "Unique ID" e.g. DFF97E65-7139-401B-9D27-13FC975BE08D\
 ![Info](ImagesGPO/GPO26.png)\
 Note:  In this example is in "\\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User"\
