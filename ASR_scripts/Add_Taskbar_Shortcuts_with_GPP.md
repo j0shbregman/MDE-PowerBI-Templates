@@ -139,7 +139,7 @@ Under "Group Policy object:" select the policy (e.g. "Recover Taskbar")
 Under the "Linked Group Policy Objects", you should see the new policy.\
 
 ##### 15. Verify that the GPO is making it to the Windows 10 or Windows 11 client.
-On a Windows 10 or Windows 11 client, login with a end-user account (running as a domain user, not as LocalAdmin)
+On a Windows 10 or Windows 11 client, login with a end-user account (running as a domain user, not as LocalAdmin)\
 Open up Task Scheduler\
 Double click on "Task Scheduler Library"\
 Under name, you should be able to see "Recover Tasbar"
