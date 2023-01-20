@@ -92,13 +92,13 @@ Note: The expiration is optional
 Click on New...
 
 ### *Copy c:\temp\MpTaskBarRecover.exe to \\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User*
-Note: The GUID here will be different for your environment.  Review Step 5 above.
+Note: The GUID here will be different for your environment.  Review Step 4 above.
 >
 
 ![Info](ImagesGPO/GPO31.png)\
 Click on "Browse..."\
 Note: \\dc\SYSVOL\contoso.com\Policies\DFF97E65-7139-401B-9D27-13FC975BE08D\User\
-Note: The GUID here will be different for your environment.  Review Step 5 above.
+Note: The GUID here will be different for your environment.  Review Step 4 above.
 
 ![Info](ImagesGPO/GPO32.png)\
 In the Open dialog box, next to "File name:" Make sure that MpTaskbarRecover is present\
