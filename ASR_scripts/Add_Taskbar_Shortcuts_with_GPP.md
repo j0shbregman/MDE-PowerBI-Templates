@@ -17,7 +17,7 @@ This guide visually demonstrates steps described in Microsoft public documentati
 
 ##### 2. Expand Group Policy Management > Forest: "your domain name e.g. contoso.com"  > Domains > "your domain name e.g. contoso.com" > Group Policy Objects
 
-![Info](.ImagesGPO/GPO18.png)\
+![Info](ImagesGPO/GPO18.png)\
 Right-click on "Group Policy Objects"\
 Click on New
 
