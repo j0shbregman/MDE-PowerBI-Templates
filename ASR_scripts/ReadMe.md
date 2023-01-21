@@ -56,9 +56,9 @@ $programs = @{
 ```
 **_NOTE:_**  This script has the following limitations:
 - Applications that have multiple paths (separated by a ;) in ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` are not currently supported.
-- This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate start menu items.  The scipt will not restore the items in a custom layout group.
+- This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate Start Menu items.  The script will not restore the items in a custom layout group.
 - This script does not recreate links for UWP apps\WindowsApps
-- This script does not recreate pinned quick launch or start menu items.
+- This script does not recreate pinned Quick Launch or Start Menu items.
 
 
 **Important:** ```$programs``` table is a key=value pair, with [] used to denote programs that have version year info, like [Visual Studio]. For such entries with [], we will lookup file description in file version info and use that, if it does not exist, we will fallback using generic name.
