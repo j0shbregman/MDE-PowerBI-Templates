@@ -54,6 +54,12 @@ $programs = @{
     "[Adobe Illustrator]"          = "illustrator.exe"
     ...
 ```
+**_NOTE:_**  This script has the following limitations:
+- Applications that have multiple paths in ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` are not currently supported.
+- This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate start menu items.  The scipt will not restore the items in a custom layout group.
+- This script does not recreate links for UWP apps\WindowsApps
+- This script does not recreate pinned quick launch or start menu items.
+
 
 **Important:** ```$programs``` table is a key=value pair, with [] used to denote programs that have version year info, like [Visual Studio]. For such entries with [], we will lookup file description in file version info and use that, if it does not exist, we will fallback using generic name.
 
@@ -78,10 +84,6 @@ If the script discovers VSS (shadow copy), then the shadow copies are mounted, a
 
 ### Saving Results (Optional) 
 For information about this tool, including data it stores to understand effectiveness, go to https://aka.ms/ASR_shortcuts_deletion_FAQ
-
-### Best effort to trigger run once of MpRecoverTaskbar.exe (Optional)
-The ```MpRecoverTaskbar.exe``` is added as a RunOnce to all users and there is a best effort attempt to run the .exe when the script runs.  If the script is unsuccessful, then the .exe will run the next time the user logs in.
-
 
 ### Release History
 
@@ -113,6 +115,8 @@ MpRecoverTaskbar.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 --force        Force to rerun the tool on the same device.
 -?             Display usage without running the tool.
 ```
+
+
 ### Release History
 | Version |Date | Details | Microsoft Download Center Link |
 |-----    |-----|------   |-----                           |
