@@ -9,7 +9,6 @@ Then read the Frequently Asked Questions (FAQ) here: https://aka.ms/ASR_shortcut
 This repo contains information about the following scripts:
 * AddShortcuts.ps1 - PowerShell script that attempts to restore impacted shortcuts based on information retrieved from VSS (shadow copy) and registry
 * MpRecoverTaskbar.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
-* ASROfficeWin32IsSystemImpacted.ps1 - PowerShell script that checks based on available logs and events if a machine has been impacted by this issue
 
 **Note:**  All of these scripts are signed by Microsoft
 
@@ -121,17 +120,6 @@ MpRecoverTaskbar.exe [-v] [--notelemetry] [--force] [--forcerepair] [-?]
 
 ### Notes
 **#1:** Logs will be saved to ```%temp%\MpRecoverTaskBar-xxxx_x_x_x_x_x*.log``` 
-
-## ASROfficeWin32IsSystemImpacted.ps1
-Script to detect impact on a machine using security intelligence update (SIU aka signature definitions) versions installed and time range, and *any* events logged.
-
-### Release History
-Version | Date    | Details | Link |
-| ------- | ------- | ----------- | ------|
-| v1      |  01/16/2023 | Initial Release | https://aka.ms/ASRTestImpact |
-
-### Notes
-**#1:** The logic depends on Windows Event entries that contain the 3 impacted SIU versions. However, those events get rotated, especially as days pass, so you may see entries like 'Machine was not impacted by ASR rule' or 'Machine didn't get affected' respectively for the scripts. The ForceRepair parameter is for that purpose.
 
 # Deployment options
 Here are a couple of deployment tools that can be used to push out the PowerShell script (AddShortcuts.ps1) and/or .exe's (MpRecoverTaskbar.exe).
