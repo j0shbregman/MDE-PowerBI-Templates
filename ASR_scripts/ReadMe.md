@@ -10,7 +10,14 @@ This repo contains information about the following scripts:
 * AddShortcuts.ps1 - PowerShell script that attempts to restore impacted shortcuts based on information retrieved from VSS (shadow copy) and registry
 * MpRecoverTaskbar.exe - Executable that attempts to restore taskbar links and libraries based on information retrieved from the registry
 
-**Note:**  All of these scripts are signed by Microsoft
+**_NOTE:_**  All of these scripts are signed by Microsoft
+
+**_NOTE:_**  Please be aware of the following known limitations (all versions):
+- Applications that have multiple paths (separated by a ;) in ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` are not currently supported.
+- This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate Start Menu items.  The script will not restore the items in a custom layout group.
+- This script does not recreate links for UWP apps\WindowsApps
+- This script may not recreate pinned Quick Launch or Start Menu items if they are not available in VSS.
+- This script may not recreate links for Visual Studio (devenv.exe)
 
 ## AddShortCuts.ps1
 This script provides a variety of techniques that can help recover links.
@@ -54,15 +61,6 @@ $programs = @{
     "[Adobe Illustrator]"          = "illustrator.exe"
     ...
 ```
-**_NOTE:_**  This script has the following limitations:
-- Applications that have multiple paths (separated by a ;) in ``` SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths ``` are not currently supported.
-- This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate Start Menu items.  The script will not restore the items in a custom layout group.
-- This script does not recreate links for UWP apps\WindowsApps
-- This script does not recreate pinned Quick Launch or Start Menu items.
-- This script may not recreate links for Visual Studio (devenv.exe)
-
-
-
 **Important:** ```$programs``` table is a key=value pair, with [] used to denote programs that have version year info, like [Visual Studio]. For such entries with [], we will lookup file description in file version info and use that, if it does not exist, we will fallback using generic name.
 
 ### Best effort to trigger RunOnce of MpRecoverTaskbar.exe 
