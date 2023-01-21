@@ -19,6 +19,7 @@ This repo contains information about the following scripts:
 - This script may not recreate pinned Quick Launch or Start Menu items if they are not available in VSS.
 - This script may not recreate links for Visual Studio (devenv.exe)
 
+
 ## AddShortCuts.ps1
 This script provides a variety of techniques that can help recover links.
 ### Usage
@@ -102,6 +103,10 @@ For information about this tool, including data it stores to understand effectiv
 
 ## MpRecoverTaskbar.exe
 Tool to try recovering taskbar shortcuts (.lnk) and library links.
+
+- The tool restores Windows Library shortcuts for 6 known folders.
+- The tool restores pinned taskbar shortcuts for win32 apps.
+- Per profile pinned shortcuts are only supported for MsEdge and Chrome apps.
 
 ### Usage
 ```
