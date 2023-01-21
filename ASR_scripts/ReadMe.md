@@ -59,7 +59,7 @@ $programs = @{
 - This script will create shortcuts in the Start Menu and not in a sub folder.  This may result in the creation of duplicate Start Menu items.  The script will not restore the items in a custom layout group.
 - This script does not recreate links for UWP apps\WindowsApps
 - This script does not recreate pinned Quick Launch or Start Menu items.
-- This script may not restore Visual Studio (devenv.exe)
+- This script may not recreate links for Visual Studio (devenv.exe)
 
 
 
