@@ -133,7 +133,7 @@ Here are a couple of deployment tools that can be used to push out the PowerShel
 
 # How to check if your Windows 10 or Windows 11 machines are still running the impacted SIU:
 In Advanced Hunting, you are able to run the following Advanced Hunting (AH) query to see if any of your devices require an updated version of the SIU: 
-https://github.com/microsoft/MDE-PowerBI-Templates/blob/master/ASR_AdvancedHunting/Check_what_machines_have_the_bad_signatures
+[Check what machines have the bad signatures](../ASR_AdvancedHunting/Check_what_machines_have_the_bad_signatures)
 
 Once you confirm that the devices have an updated SIU, you can move the ASR Rules - “Block Win32 API calls from Office macro” rule to **block mode**.
 
